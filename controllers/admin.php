@@ -16,10 +16,10 @@ class Admin extends Admin_Controller
         $this->lang->load('pyrotoast');
         //Check for filter fields.
         $class_input = $this->input->post('f_classes');
-        $class_filter = $class_input === '0' ? FALSE : $class_input;
+        $class_filter = $class_input == 0 ? FALSE : $class_input;
 
         $module_input = $this->input->post('f_module_name');
-        $module_filter = $module_input === '0' ? False : $module_input;
+        $module_filter = $module_input == 0 ? FALSE : $module_input;
         $modules = $this->test_suite_m->get_modules($module_filter, $class_filter);
 
         $names = array();
