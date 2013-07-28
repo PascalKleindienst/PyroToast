@@ -2,13 +2,15 @@
   <h4> <?php echo lang('pyrotoast:report')?> </h4>
 </section>
 <section class="item">
+  <div class="content">
+    
+  
   <?php if($fails !== 0): ?>
   <h4 class="fail"> Failure </h4>
   <?php else: ?>
    <h4 class="success"> All tests passed! </h4>
    <?php endif; ?>
-</section>
-<section class="item">
+   
 <?php foreach($test_results as $class => $data): ?>
   <h4> <?php $class ?> </h4>
   <table>
@@ -23,9 +25,9 @@
   <?php foreach($data['results'] as $result): ?>
     <tr>
       <td><?php echo $result['method']; ?></td>
-      <td class="<?php echo $result['Result'] ?>"><?php echo $result['Result'] ?></td>
+      <td class="<?php echo $result['result'] ?>"><?php echo $result['result'] ?></td>
     </tr>
   <?php endforeach; ?>
 <?php endforeach; ?>
-  </table>
+  </table></div>
 </section>

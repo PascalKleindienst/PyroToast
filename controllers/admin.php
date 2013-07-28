@@ -8,6 +8,7 @@ class Admin extends Admin_Controller
     {
         parent::__construct();
         $this->load->model('test_suite_m');
+        $this->load->language('pyrotoast');
         $this->old_prefix = $this->db->dbprefix;
     }
     public function index()
@@ -108,7 +109,7 @@ class Admin extends Admin_Controller
         $fails = 0;
         foreach($results as $class_results){
             foreach($class_results['results'] as $result){
-                if($result['Result'] == 'Passed'){
+                if($result['result'] == 'Passed'){
                     $passes++;
                 }
                 else{

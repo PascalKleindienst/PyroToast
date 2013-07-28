@@ -102,9 +102,10 @@ abstract class Toast extends MY_Controller
     {
         //Since I don't know how to remove the urls from Test Name in the default unit->result,
         //we replace Test Name with the class name and method name
+        $this->lang->load('unit_test');
         $old_results = $this->unit->result();
         foreach($old_results as $result){
-            $test_name = strip_tags($result['Test Name']);
+            $test_name = strip_tags($result[ $this->lang->line('ut_test_name') ]);
             $test_data = explode('->',$test_name);
             $result['classname'] = trim($test_data[0]);
             $result['method'] = trim($test_data[1]);

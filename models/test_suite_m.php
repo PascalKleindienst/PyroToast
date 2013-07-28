@@ -26,16 +26,56 @@ class Test_suite_m extends My_Model
     {
         foreach($this->test_obj_tree as $module=> $test_obj){
             $this->load_test_file($this->module_m->get($module));
-            $this->install_test_table($module);
+            $this->install_test_table($module); 
             foreach($test_obj as $class => $methods){
                 $obj = new $class();
                 foreach($methods as $method){
                     $obj->run($method);
                 }
-                $this->total_results[$class] = $obj->get_data();
+
+                $data = $this->clean_data($obj->get_data());
+                $this->total_results[$class] = $data;
             }
             $this->uninstall_test_table($module);
         }
+    }
+
+    /**
+     * Clean the unit testing data from localized array keys
+     * @author Pascal Kleindienst
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function clean_data($data)
+    {
+        $this->lang->load('unit_test');
+        $clean_results = array();
+        $lang_keys = array('test_name', 'test_datatype', 'res_datatype', 'result', 'undefined', 'file',
+            'line', 'passed', 'failed', 'boolean', 'integer', 'float', 'double', 'string', 'array', 
+            'object', 'resource', 'null');
+        $lang_vals = array();
+
+        foreach ($lang_keys AS $value)
+            $lang_vals[] = $this->lang->line('ut_' . $value);
+
+        foreach($data['results'] AS $clean_key => $result) {
+            $clean_results[$clean_key] = array();
+
+            foreach ($result as $key => $value) {
+                if($key === 0)
+                    continue;
+
+                if( ($new = array_search($key, $lang_vals)) > -1 ){
+                    $clean_results[$clean_key][$lang_keys[$new]] = $value;
+                }
+                else
+                    $clean_results[$clean_key][$key] = $value;
+
+            }
+        }
+        $data['results'] = $clean_results;
+
+       return $data;
     }
 
     /**
