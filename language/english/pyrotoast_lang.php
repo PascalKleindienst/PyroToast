@@ -11,5 +11,5 @@ $lang['pyrotoast:no_testable_modules'] = "No testable modules found. Are you sur
 $lang['pyrotoast:report'] = "Report";
 $lang['pyrotoast:status'] = "status";
 $lang['pyrotoast:messages'] = "messages";
-$lang['pyrotoast:x_failures'] = "%s failed test(s) of %s total test(s)";
+$lang['pyrotoast:x_passed_tests'] = "%s out of %s tests passed";
 ?>

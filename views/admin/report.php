@@ -1,7 +1,7 @@
 <section class="title">
 	<?php if($fails !== 0): ?>
 	<h4 class="fail">
-		<?php echo lang('pyrotoast:report')?> - <?php echo sprintf(lang('pyrotoast:x_failures'), $fails, $fails+$passes); ?> 
+		<?php echo lang('pyrotoast:report')?> - Some Tests failed!
 	</h4>
 	<?php else: ?>
 	<h4 class="success">
@@ -12,6 +12,12 @@
 
 <section class="item">
 	<div class="content"> 
+	<div class="meter<?php if($fails === 0) echo ' passed'; ?>">
+		<em class="percentage"><?php echo sprintf(lang('pyrotoast:x_passed_tests'), $passes, $fails+$passes); ?></em>
+	    <span style="width: <?php echo $passes * 100 / ($fails + $passes);?>%">
+	    	
+	    </span>
+	</div>
 	<?php foreach($test_results as $class => $data): ?>
 		<h4> <?php echo $class; ?> </h4>
 		<table>
