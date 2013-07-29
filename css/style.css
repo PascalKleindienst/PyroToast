@@ -1,7 +1,7 @@
 .success, .passed {
-    color: #46a546;
+    color: #46a546 !important;
 }
-.fail .failed{
-    color: #9d261d;
+.fail, .failed{
+    color: #9d261d !important; 
 }
 

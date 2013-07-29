@@ -6,4 +6,10 @@ $lang['pyrotoast:module_name'] = "Module Name";
 $lang['pyrotoast:test_method'] = "Test method";
 $lang['pyrotoast:test_class'] = "Test class";
 $lang['pyrotoast:no_testable_modules'] = "No testable modules found. Are you sure you have a /tests directory with classes that extend the Toast class?";
+
+
+$lang['pyrotoast:report'] = "Report";
+$lang['pyrotoast:status'] = "status";
+$lang['pyrotoast:messages'] = "messages";
+$lang['pyrotoast:x_failures'] = "%s failed test(s) of %s total test(s)";
 ?>
